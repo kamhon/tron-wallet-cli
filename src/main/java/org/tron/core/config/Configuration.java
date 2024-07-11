@@ -57,7 +57,7 @@ public class Configuration {
         }
       }else {
         config = ConfigFactory.load(configurationPath);
-        System.out.println("user defined config file doesn't exists, use default config file in jar");
+        // System.out.println("user defined config file doesn't exists, use default config file in jar");
       }
     }
     return config;

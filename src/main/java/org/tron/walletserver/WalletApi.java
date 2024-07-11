@@ -187,7 +187,7 @@ public class WalletApi {
     }
     if (config.hasPath("RPC_version")) {
       rpcVersion = config.getInt("RPC_version");
-      System.out.println("WalletApi getRpcVsersion: " + rpcVersion);
+      // System.out.println("WalletApi getRpcVsersion: " + rpcVersion);
     }
     if (config.hasPath("crypto.engine")) {
       isEckey = config.getString("crypto.engine").equalsIgnoreCase("eckey");
