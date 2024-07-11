@@ -1,5 +1,5 @@
 group 'Tron'
-version '1.0-SNAPSHOT'
+version '4.4.0'
 
 apply plugin: 'java'
 apply plugin: 'com.google.protobuf'
