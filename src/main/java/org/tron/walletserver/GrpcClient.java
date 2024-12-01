@@ -93,11 +93,26 @@ public class GrpcClient {
 //    blockingStub = WalletGrpc.newBlockingStub(channel);
 //  }
 
-  public GrpcClient(String fullnode, String soliditynode) {
+  public GrpcClient(String fullnode, String soliditynode, String basicUsername, String basicPassword ) {
     if (!StringUtils.isEmpty(fullnode)) {
+      ManagedChannelBuilder builder = ManagedChannelBuilder.forTarget(fullnode);
+
+      if(!StringUtils.isEmpty(basicUsername) && !StringUtils.isEmpty(basicPassword)) {
+        // builder.useTransportSecurity()
+        builder = builder.intercept(new BasicAuthInterceptor(basicUsername, basicPassword));
+      } else {
+        builder = builder.usePlaintext();
+      }
+
+      channelFull = builder.build();
+
+      /*
       channelFull = ManagedChannelBuilder.forTarget(fullnode)
+              .intercept(new BasicAuthInterceptor(basicUsername, basicPassword))
           .usePlaintext()
           .build();
+      */
+
       blockingStubFull = WalletGrpc.newBlockingStub(channelFull);
     }
     if (!StringUtils.isEmpty(soliditynode)) {

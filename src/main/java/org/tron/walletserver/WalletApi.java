@@ -193,7 +193,7 @@ public class WalletApi {
       isEckey = config.getString("crypto.engine").equalsIgnoreCase("eckey");
       System.out.println("WalletApi getConfig isEckey: " + isEckey);
     }
-    return new GrpcClient(fullNode, solidityNode);
+    return new GrpcClient(fullNode, solidityNode, null, null);
   }
 
   public static String selectFullNode() {
